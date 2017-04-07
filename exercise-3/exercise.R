@@ -11,25 +11,25 @@ sample(marbles, 1)
 # - Takes in a `guess` of a marble color
 # - Randomly samples a marble
 # - Returns whether or not the person guessed accurately (preferrably a full phrase)
-MarbleGame <- function(guess, marbles) {
+MarbleGame <- function(guess) {
   return (paste('Your guess was', guess == sample(marbles, 1)))
 }
 
 # Play the marble game!
 
 guess <- 'Red'
-MarbleGame(guess, marbles)
+MarbleGame(guess)
 
 # Bonus: Play the marble game until you win, keeping track of how many tries you take
 
-keepPlaying <- function(guess, marbles) {
-  result <- MarbleGame(guess, marbles)
+keepPlaying <- function(guess) {
+  result <- MarbleGame(guess)
   count <- 0
-  while (result == TRUE) {
-    result <- MarbleGame(guess, marbles)
+  while (result == 'Your guess was FALSE') {
+    result <- MarbleGame(guess)
     count <- count + 1
   }
-  return (count)
+  return (paste('You won in', count, 'times'))
 }
 
 ## Double bonus(answer not provided): play the game 1000X (until you win) and track the average number of tries
